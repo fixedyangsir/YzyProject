@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="typeface" format="enum">
+        <enum name="regular" value="0" />
+        <enum name="medium" value="1" />
+        <enum name="bold" value="2" />
+        <enum name="light" value="3" />
+    </attr>
+    <declare-styleable name="TypefaceTextView">
+        <attr name="typeface" />
+
+    </declare-styleable>
+    <declare-styleable name="TypefaceRadioButton">
+        <attr name="typeface" />
+    </declare-styleable>
+    <declare-styleable name="TypefaceEditText">
+        <attr name="typeface" />
+    </declare-styleable>
+    <declare-styleable name="TypefaceCheckBox">
+        <attr name="typeface" />
+    </declare-styleable>
+
+</resources>

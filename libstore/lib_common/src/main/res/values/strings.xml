@@ -1,0 +1,11 @@
+<resources>
+    <string name="request_network">Loading</string>
+    <string name="str_timeout_error">Network is unreachable</string>
+    <string name="str_ssl_error">Certificate error, please try again later</string>
+    <string name="str_network_error">Network error</string>
+    <string name="str_parse_error">Parsing error, please try again later</string>
+    <string name="str_unknown_error">Request failed, please try again later</string>
+
+
+
+</resources>

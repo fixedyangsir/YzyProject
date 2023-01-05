@@ -1,0 +1,31 @@
+apply from: "${rootProject.getProjectDir()}/config_lib_build.gradle"
+
+android {
+  //  resourcePrefix "common_" //给 Module 内的资源名增加前缀, 避免资源名冲突
+
+}
+
+dependencies {
+
+    api rootProject.ext.androidLibs
+    api rootProject.ext.kotlinLibs
+    api rootProject.ext.lifecycleLibs
+    api rootProject.ext.netDependencies
+
+    api rootProject.ext.viewDeps.dialog
+    api rootProject.ext.viewDeps.toast
+    api rootProject.ext.viewDeps.shapeView
+    api rootProject.ext.viewDeps.immersionbar
+    api rootProject.ext.viewDeps.immersionbarComponents
+    api rootProject.ext.viewDeps.immersionbarKtx
+
+    api rootProject.ext.toolDeps.logger
+    api rootProject.ext.toolDeps.mmkv
+    api rootProject.ext.toolDeps.livedata
+    api rootProject.ext.toolDeps.multidex
+    api rootProject.ext.toolDeps.autosize
+
+    api rootProject.ext.commonDeps.arouter_api
+
+
+}

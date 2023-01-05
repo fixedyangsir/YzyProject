@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.yzy.module_base">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <dist:module dist:instant="true" />
+
+    <meta-data
+        android:name="android.max_aspect"
+        android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
+
+    <meta-data
+        android:name="android.notch_support"
+        android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
+    <meta-data
+        android:name="notch.config"
+        android:value="portrait|landscape" />
+    <meta-data
+        android:name="design_width_in_dp"
+        android:value="375" />
+    <meta-data
+        android:name="design_height_in_dp"
+        android:value="756" />
+</manifest>

@@ -1,0 +1,13 @@
+apply from: "${rootProject.getProjectDir()}/config_component_build.gradle"
+apply plugin: 'kotlin-android'
+
+
+
+android {
+
+
+
+}
+
+dependencies {
+}

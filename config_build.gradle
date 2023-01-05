@@ -1,0 +1,69 @@
+/**
+ * 关于整个项目(app/module)的通用gradle配置
+ */
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    //这个是ARouter需要配置的kapt
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        multiDexEnabled true
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+
+
+        //不进行代码静态检测
+        lintOptions {
+            abortOnError false
+            disable 'StringFormatInvalid'
+        }
+
+        //支持java8
+        compileOptions {
+            coreLibraryDesugaringEnabled true
+
+            targetCompatibility JavaVersion.VERSION_1_8
+            sourceCompatibility JavaVersion.VERSION_1_8
+        }
+        //支持kotlin
+        kotlinOptions {
+            jvmTarget = '1.8'
+            useIR = true
+        }
+        buildFeatures{
+
+            dataBinding = true
+        }
+
+        //生成libs目录
+        sourceSets {
+            main {
+                jniLibs.srcDir 'libs'
+            }
+        }
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    kapt rootProject.ext.commonDeps.arouter_compiler
+    implementation rootProject.ext.commonDeps.arouter_api
+    api project(':module_base')
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+}

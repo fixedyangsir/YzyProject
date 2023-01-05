@@ -1,0 +1,31 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://jitpack.io' }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+rootProject.name = "YzyProject"
+include ':app'
+
+include ':module_mine'
+include ':module_login'
+include ':module_home'
+include ':module_base'
+
+include ':libstore:lib_common'
+include ':libstore:lib_protocal'
+include ':libstore:lib_ble'
+
+include ':vmAnnCompiler'

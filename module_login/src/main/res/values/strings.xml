@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Login 模块</string>
+    <string name="str_account">请输入账号</string>
+    <string name="str_pwd">请输入密码</string>
+    <string name="str_login">登录</string>
+    <string name="str_login_success">登录成功</string>
+    <string name="str_account_input_tip">账号至少6位！</string>
+    <string name="str_pwd_input_tip">密码至少6位！</string>
+</resources>

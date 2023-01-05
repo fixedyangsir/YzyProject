@@ -1,0 +1,53 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@mipmap/icon_bg"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent"/>
+
+        <com.yzy.lib_common.widget.StatusView
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/statusView"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:src="@mipmap/ic_logo"
+            app:layout_constraintTop_toBottomOf="@id/statusView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/img_menu"
+            android:layout_margin="15dp"
+            android:layout_height="40dp" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:clipChildren="false"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_menu"
+            android:layout_height="0dp">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clipChildren="false"
+                android:overScrollMode="never"
+                android:visibility="visible" />
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

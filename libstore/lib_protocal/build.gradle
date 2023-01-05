@@ -1,0 +1,10 @@
+apply from: "${rootProject.getProjectDir()}/config_lib_build.gradle"
+
+android {
+
+}
+
+dependencies {
+
+
+}

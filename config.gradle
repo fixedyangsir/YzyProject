@@ -1,0 +1,97 @@
+/**
+ *  全局统一配置文件
+ */
+ext {
+    //true 每个业务Module可以单独开发
+    //false 每个业务Module以lib的方式运行
+    //修改之后需要Sync方可生效
+    isModule = false
+    android = [
+            applicationId    : "com.yingsheng.hayloufun",
+            compileSdkVersion: 31,
+            buildToolsVersion: "30.0.2",
+            targetSdkVersion : 31,
+            minSdkVersion    : 26,
+            versionCode      : 1,
+            versionName      : "1.0.0",
+            androidXVersion  : "1.4.1",
+            ktx_core_version : "1.5.2",
+            lifecycle_version: "2.2.0",
+    ]
+
+    applicationid = [
+            app         : "com.yzy.demo",
+            module_home : "com.yzy.module_home",
+            module_login: "com.yzy.module_login",
+            module_mine : "com.yzy.module_mine"
+    ]
+
+
+    netDependencies = [
+            "gson"               : "com.google.code.gson:gson:2.8.6",
+            "okhttp3"            : "com.squareup.okhttp3:okhttp:4.1.0",
+            "retrofit"           : "com.squareup.retrofit2:retrofit:2.9.0",
+            "converter-gson"     : "com.squareup.retrofit2:converter-gson:2.9.0",
+            "logging-interceptor": "com.squareup.okhttp3:logging-interceptor:4.9.0",
+            "url-manager"        : "me.jessyan:retrofit-url-manager:1.4.0",
+    ]
+
+    androidDeps = [
+            "appcompat"       : "androidx.appcompat:appcompat:${android["androidXVersion"]}",
+            "viewpager2"      : "androidx.viewpager2:viewpager2:1.0.0",
+            "material"        : "com.google.android.material:material:1.4.0",
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.1.4",
+    ]
+
+    kotlinDeps = [
+            "ktx-core"          : "androidx.core:core-ktx:1.7.0",
+            "coroutines-core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${android.ktx_core_version}",
+            "coroutines-android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${android.ktx_core_version}",
+    ]
+
+    lifecycleDeps = [
+            "lifecycle-extensions": "androidx.lifecycle:lifecycle-extensions:${android.lifecycle_version}",
+            "livedata-ktx"        : "androidx.lifecycle:lifecycle-livedata-ktx:${android.lifecycle_version}",
+            "viewmodel-ktx"       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${android.lifecycle_version}"
+    ]
+
+    commonDeps = [
+            //路由
+            "arouter_api"     : 'com.alibaba:arouter-api:1.5.1',
+            "arouter_compiler": 'com.alibaba:arouter-compiler:1.5.1',
+
+    ]
+
+    viewDeps = [
+            "dialog"                 : 'com.github.li-xiaojun:XPopup:2.9.1',
+            //https://github.com/getActivity/ToastUtils
+            "toast"                  : 'com.github.getActivity:ToastUtils:10.3',
+            // Shape 框架：https://github.com/getActivity/ShapeView
+            "shapeView"              : 'com.github.getActivity:ShapeView:6.2',
+
+            // 状态栏 https://github.com/gyf-dev/ImmersionBar
+            "immersionbar"           : 'com.gyf.immersionbar:immersionbar:3.0.0',
+            "immersionbarComponents": 'com.gyf.immersionbar:immersionbar-components:3.0.0',
+            "immersionbarKtx"       : 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
+
+    ]
+
+    toolDeps = [
+            "logger"            : "com.orhanobut:logger:2.2.0",
+            "mmkv"              : "com.tencent:mmkv-static:1.2.12",
+            //对LiveData 进行了功能扩展，可用于避免粘性事件及解决通知延迟问题 https://github.com/leavesC/EventLiveData/wiki
+            "livedata"          : "com.github.leavesCZY:EventLiveData:1.0.2",
+            "multidex"          : 'androidx.multidex:multidex:2.0.1',
+            "autosize"          : 'me.jessyan:autosize:1.2.1',
+            //leakcanary内存泄露
+            "leakcanary-android": "com.squareup.leakcanary:leakcanary-android:2.8.1",
+
+    ]
+
+    androidLibs = androidDeps.values()
+    kotlinLibs = kotlinDeps.values()
+    lifecycleLibs = lifecycleDeps.values()
+    netDependencies = netDependencies.values()
+
+
+}

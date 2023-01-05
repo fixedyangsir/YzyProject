@@ -1,0 +1,56 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="50dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="180dp"
+            android:src="@mipmap/ic_logo" />
+
+        <EditText
+            style="@style/login_input"
+            android:layout_marginTop="20dp"
+            android:id="@+id/et_account"
+            android:hint="@string/str_account" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_696969" />
+        <EditText
+            style="@style/login_input"
+            android:layout_marginTop="20dp"
+            android:inputType="textPassword"
+            android:id="@+id/et_pwd"
+            android:hint="@string/str_pwd" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_696969" />
+
+        <com.hjq.shape.view.ShapeTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/str_login"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"
+            app:shape_radius="25dp"
+            android:id="@+id/tv_login"
+            app:shape_strokeColor="@color/color_AAAAAA"
+            app:shape_strokeWidth="1dp" />
+
+    </LinearLayout>
+</layout>

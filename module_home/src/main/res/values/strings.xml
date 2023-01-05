@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Home 模块</string>
+    <string name="transition_image">transition_image</string>
+</resources>
