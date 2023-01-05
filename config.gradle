@@ -59,18 +59,21 @@ ext {
             //路由
             "arouter_api"     : 'com.alibaba:arouter-api:1.5.1',
             "arouter_compiler": 'com.alibaba:arouter-compiler:1.5.1',
+            //依赖注入
+            "hilt"            : 'com.google.dagger:hilt-android:2.44',
+            "hilt_compiler"   : 'com.google.dagger:hilt-android-compiler:2.44'
 
     ]
 
     viewDeps = [
-            "dialog"                 : 'com.github.li-xiaojun:XPopup:2.9.1',
+            "dialog"                : 'com.github.li-xiaojun:XPopup:2.9.1',
             //https://github.com/getActivity/ToastUtils
-            "toast"                  : 'com.github.getActivity:ToastUtils:10.3',
+            "toast"                 : 'com.github.getActivity:ToastUtils:10.3',
             // Shape 框架：https://github.com/getActivity/ShapeView
-            "shapeView"              : 'com.github.getActivity:ShapeView:6.2',
+            "shapeView"             : 'com.github.getActivity:ShapeView:6.2',
 
             // 状态栏 https://github.com/gyf-dev/ImmersionBar
-            "immersionbar"           : 'com.gyf.immersionbar:immersionbar:3.0.0',
+            "immersionbar"          : 'com.gyf.immersionbar:immersionbar:3.0.0',
             "immersionbarComponents": 'com.gyf.immersionbar:immersionbar-components:3.0.0',
             "immersionbarKtx"       : 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
 

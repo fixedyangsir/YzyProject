@@ -3,8 +3,8 @@ package com.yzy.module_home.widget.expandPage.fragments
 import android.os.Bundle
 import android.view.View
 import com.yzy.module_base.base.BaseFragment
+import com.yzy.module_base.bean.Travel
 import com.yzy.module_home.R
-import com.yzy.module_home.bean.Travel
 import com.yzy.module_home.databinding.FragmentBottomBinding
 import com.yzy.module_home.widget.expandPage.fragments.vm.BottomVM
 

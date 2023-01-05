@@ -10,10 +10,10 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.yzy.module_base.base.BaseActivity
+import com.yzy.module_base.bean.Travel
 import com.yzy.module_base.utils.ARouterUtils
 import com.yzy.module_home.R
-import com.yzy.module_home.adpter.TravelViewPagerAdapter
-import com.yzy.module_home.bean.Travel
+import com.yzy.module_home.adpter.TravelAdapter
 import com.yzy.module_home.databinding.ActivityHomeBinding
 import com.yzy.module_home.ui.vm.HomeVM
 import com.yzy.module_home.widget.expandPage.ExpandPagerHelper
@@ -38,9 +38,9 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
     }
 
     private fun initViewPage() {
-        val adapter = TravelViewPagerAdapter(supportFragmentManager)
+        val adapter = TravelAdapter(supportFragmentManager)
         adapter.addAll(generateTravelList())
-        mDatabind.viewPager.setAdapter(adapter)
+        mDatabind.viewPager.adapter = adapter
         setupViewPager(mDatabind.viewPager)
         mDatabind.viewPager.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(
@@ -61,7 +61,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
 
     private fun generateTravelList(): List<Travel> {
         val travels: MutableList<Travel> = ArrayList()
-        for (i in 0..4) {
+      /*  for (i in 0..4) {
             //  String name, String front_left, String front_right, String bottom_content, String bottom_type, int bottom_img, int image
             travels.add(Travel(MODULE_1,
                 "by 杨镇瑜",
@@ -84,7 +84,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
                 "TOOLS LIBRARY",
                 R.mipmap.icon_gongju,
                 R.mipmap.icon_page_01))
-        }
+        }*/
         return travels
     }
 

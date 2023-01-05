@@ -3,7 +3,7 @@ package com.yzy.module_home.widget.expandPage.fragments
 import android.os.Bundle
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
-import com.yzy.module_home.bean.Travel
+import com.yzy.module_base.bean.Travel
 import com.yzy.module_home.databinding.FragmentExpandingBinding
 import com.yzy.module_home.widget.expandPage.fragments.vm.ExpandVM
 

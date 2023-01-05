@@ -1,4 +1,4 @@
-package com.yzy.module_home.bean;
+package com.yzy.module_base.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;

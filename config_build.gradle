@@ -3,6 +3,8 @@
  */
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.dagger.hilt.android'
+
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -63,6 +65,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     kapt rootProject.ext.commonDeps.arouter_compiler
     implementation rootProject.ext.commonDeps.arouter_api
+    
+    kapt rootProject.ext.commonDeps.hilt_compiler
+    implementation rootProject.ext.commonDeps.hilt
+
+
     api project(':module_base')
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 

@@ -26,6 +26,7 @@
       <module name="YzyProject.libstore.lib_common" target="11" />
       <module name="YzyProject.libstore.lib_protocal" target="11" />
       <module name="YzyProject.module_base" target="11" />
+      <module name="YzyProject.module_data" target="11" />
       <module name="YzyProject.module_home" target="11" />
       <module name="YzyProject.module_login" target="11" />
       <module name="YzyProject.module_mine" target="11" />

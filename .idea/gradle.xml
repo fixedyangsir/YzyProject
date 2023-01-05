@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/libstore/lib_common" />
             <option value="$PROJECT_DIR$/libstore/lib_protocal" />
             <option value="$PROJECT_DIR$/module_base" />
+            <option value="$PROJECT_DIR$/module_data" />
             <option value="$PROJECT_DIR$/module_home" />
             <option value="$PROJECT_DIR$/module_login" />
             <option value="$PROJECT_DIR$/module_mine" />
@@ -26,6 +27,5 @@
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
-    <option name="offlineMode" value="true" />
   </component>
 </project>
