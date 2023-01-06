@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Home 模块</string>
     <string name="transition_image">transition_image</string>
+    <string name="str_virtualview">动态布局</string>
+    <string name="str_di">依赖注入</string>
 </resources>

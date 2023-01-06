@@ -10,6 +10,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.gyf.immersionbar.ktx.immersionBar
 import com.yzy.module_base.base.BaseActivity
 import com.yzy.module_base.service.IDataService
 import com.yzy.module_base.utils.ARouterUtils
@@ -39,6 +40,16 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
 
 
     override fun layoutId() = R.layout.activity_home
+
+    override fun initImmersionBar() {
+        // super.initImmersionBar()
+        immersionBar {
+            //  statusBarColor(R.color.colorPrimary)
+            navigationBarColor(R.color.white)
+            statusBarDarkFont(false)
+            navigationBarDarkIcon(true)
+        }
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
         initViewPage()

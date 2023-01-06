@@ -60,7 +60,25 @@ android {
             outputFileName = "demo.apk"
         }
 
-
+    }
+    //签名
+    signingConfigs {
+        debug {
+            v1SigningEnabled true
+            v2SigningEnabled true
+            storeFile file("../yzy.jks")
+            storePassword '111111'
+            keyAlias '111111'
+            keyPassword '111111'
+        }
+        release {
+            v1SigningEnabled true
+            v2SigningEnabled true
+            storeFile file("../yzy.jks")
+            storePassword '111111'
+            keyAlias '111111'
+            keyPassword '111111'
+        }
     }
 }
 

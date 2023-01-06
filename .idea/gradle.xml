@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/libstore" />
-            <option value="$PROJECT_DIR$/libstore/lib_ble" />
             <option value="$PROJECT_DIR$/libstore/lib_common" />
             <option value="$PROJECT_DIR$/libstore/lib_protocal" />
             <option value="$PROJECT_DIR$/module_base" />

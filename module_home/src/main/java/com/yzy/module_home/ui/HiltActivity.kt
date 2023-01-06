@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.gyf.immersionbar.ktx.immersionBar
 import com.yzy.lib_common.util.RunUtils
 import com.yzy.module_base.base.BaseActivity
 import com.yzy.module_base.bean.Travel
@@ -53,6 +54,16 @@ class HiltActivity : BaseActivity<HiltVM, ActivityHiltBinding>() {
 
     override fun layoutId() = R.layout.activity_hilt
 
+    override fun initImmersionBar() {
+        // super.initImmersionBar()
+        immersionBar {
+            //  statusBarColor(R.color.colorPrimary)
+            navigationBarColor(R.color.white)
+            statusBarDarkFont(false)
+            navigationBarDarkIcon(true)
+        }
+    }
+
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.vm = mViewModel
         val travel: Travel? = intent.getParcelableExtra(EXTRA_TRAVEL)
@@ -60,7 +71,7 @@ class HiltActivity : BaseActivity<HiltVM, ActivityHiltBinding>() {
             mDatabind.image.setImageResource(travel.image)
             mDatabind.ctl.setCollapsedTitleTextColor(resources.getColor(R.color.white))
             mDatabind.ctl.setExpandedTitleColor(resources.getColor(R.color.teal_700))
-            mDatabind.ctl.title = "依赖注入"
+            mDatabind.ctl.title = getString(R.string.str_di)
         }
         mDatabind.toolbar.setNavigationOnClickListener { onBackPressed() }
 
