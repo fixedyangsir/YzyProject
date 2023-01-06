@@ -4,6 +4,7 @@ import com.yzy.lib_common.base.BaseApp
 
 
 class App: BaseApp() {
+
     override fun initByAppProcess() {
 
     }
