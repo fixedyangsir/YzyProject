@@ -8,9 +8,10 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.yzy.module_base.base.BaseActivity
-import com.yzy.module_base.bean.Travel
+import com.yzy.module_base.service.IDataService
 import com.yzy.module_base.utils.ARouterUtils
 import com.yzy.module_home.R
 import com.yzy.module_home.adpter.TravelAdapter
@@ -21,14 +22,20 @@ import com.yzy.module_home.widget.expandPage.ExpandPagerHelper.getCurrentFragmen
 import com.yzy.module_home.widget.expandPage.ExpandPagerHelper.setupViewPager
 import com.yzy.module_home.widget.expandPage.fragments.ExpandFragment
 
+/**
+ * 主界面 组件化 数据共享
+ */
 @Route(path = ARouterUtils.PATH_HOME)
 class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
     ExpandFragment.OnExpandingClickListener {
 
 
-    val MODULE_1 = "项目经验"
-    val MODULE_2 = "开发库"
-    val MODULE_3 = "工具库"
+    @Autowired
+    lateinit var service: IDataService
+
+    val adapter by lazy {
+        TravelAdapter(supportFragmentManager)
+    }
 
 
     override fun layoutId() = R.layout.activity_home
@@ -38,8 +45,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
     }
 
     private fun initViewPage() {
-        val adapter = TravelAdapter(supportFragmentManager)
-        adapter.addAll(generateTravelList())
+        adapter.addAll(service.getHomeData())
         mDatabind.viewPager.adapter = adapter
         setupViewPager(mDatabind.viewPager)
         mDatabind.viewPager.addOnPageChangeListener(object : OnPageChangeListener {
@@ -59,34 +65,6 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
         })
     }
 
-    private fun generateTravelList(): List<Travel> {
-        val travels: MutableList<Travel> = ArrayList()
-      /*  for (i in 0..4) {
-            //  String name, String front_left, String front_right, String bottom_content, String bottom_type, int bottom_img, int image
-            travels.add(Travel(MODULE_1,
-                "by 杨镇瑜",
-                "2017-3-16",
-                "项目经验：包含开发的项目的展示，以及一些经验的概述",
-                "MY  PROJECT",
-                R.mipmap.icon_like,
-                R.mipmap.icon_page_03))
-            travels.add(Travel(MODULE_2,
-                "by 杨镇瑜",
-                "update...",
-                "开发库：展示开发过程中所用到的三方类库、三方sdk等",
-                "DEVELOPMENT LIBRARY",
-                R.mipmap.icon_star,
-                R.mipmap.icon_page_02))
-            travels.add(Travel(MODULE_3,
-                "by 杨镇瑜",
-                "Loading...",
-                "工具库：一些工具类的集合，包含常用工具的封装，硬件交互和各种自定义View的展示",
-                "TOOLS LIBRARY",
-                R.mipmap.icon_gongju,
-                R.mipmap.icon_page_01))
-        }*/
-        return travels
-    }
 
     override fun createObserver() {
 
@@ -94,13 +72,12 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
 
     override fun onExpandingClick(v: View) {
         val view: View = v.findViewById(R.id.image)
-        val travel = generateTravelList()[mDatabind.viewPager.currentItem]
+
 
         var intent: Intent? = null
-        when (travel.name) {
-            MODULE_1 -> intent = DynamicActivity.newInstance(this, travel)
-            MODULE_2 -> intent = DynamicActivity.newInstance(this, travel)
-            MODULE_3 -> intent = DynamicActivity.newInstance(this, travel)
+        when (val index = mDatabind.viewPager.currentItem) {
+            0 -> intent = DynamicActivity.newInstance(this, adapter.travels[index])
+            1 -> intent = HiltActivity.newInstance(this, adapter.travels[index])
         }
         startInfoActivity(view, intent!!)
     }

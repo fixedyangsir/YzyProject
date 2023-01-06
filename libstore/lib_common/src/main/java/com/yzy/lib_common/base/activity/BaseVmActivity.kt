@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.alibaba.android.arouter.launcher.ARouter
 import com.yzy.lib_common.R
 import com.yzy.lib_common.base.viewmodel.BaseViewModel
 import com.yzy.lib_common.ext.getVmClazz
@@ -51,6 +52,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ARouter.getInstance().inject(this)
         if (checkNext()) {
             if (!isUserDb) {
                 setContentView(layoutId())
@@ -91,7 +93,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
      * 创建LiveData数据观察者
      */
     abstract fun createObserver()
-
 
 
     fun userDataBinding(isUserDb: Boolean) {
@@ -138,9 +139,9 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     override fun getResources(): Resources {
         runOnUiThread {
-            if (this is CustomAdapt){
-                AutoSizeCompat.autoConvertDensityOfCustomAdapt(super.getResources(),this)
-            }else{
+            if (this is CustomAdapt) {
+                AutoSizeCompat.autoConvertDensityOfCustomAdapt(super.getResources(), this)
+            } else {
                 AutoSizeCompat.autoConvertDensityOfGlobal((super.getResources()))//如果没有自定义需求用这个方法
             }
 

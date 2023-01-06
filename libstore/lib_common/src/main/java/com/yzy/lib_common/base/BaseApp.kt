@@ -1,23 +1,21 @@
 package com.yzy.lib_common.base
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
-import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hjq.toast.ToastUtils
 import com.tencent.mmkv.MMKV
 import com.yzy.lib_common.BuildConfig
-
 import com.yzy.lib_common.ext.getAppProcessName
 import com.yzy.lib_common.util.LogUtil
 import com.yzy.lib_common.util.MyToastStrategy
+import dagger.hilt.android.HiltAndroidApp
 import me.jessyan.autosize.AutoSizeConfig
 
-
-abstract class BaseApp : Application(), ViewModelStoreOwner {
+@HiltAndroidApp()
+abstract class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
     companion object {
         lateinit var baseApp: BaseApp
     }
@@ -93,8 +91,5 @@ abstract class BaseApp : Application(), ViewModelStoreOwner {
      * 获取应用包名 用于判断 多进程初始化问题
      */
     abstract fun getAppId(): String
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
-    }
+
 }

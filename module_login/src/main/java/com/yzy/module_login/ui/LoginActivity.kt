@@ -17,7 +17,7 @@ import java.lang.StringBuilder
 
 
 /**
- * 登录:展示动态生成请求代码
+ * 登录:动态生成请求代码 需要make project
  * 账号：yzy888 密码 123456
  *
  */

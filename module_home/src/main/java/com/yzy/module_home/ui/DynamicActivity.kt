@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.yzy.module_base.base.BaseActivity
+import com.yzy.module_base.bean.Travel
 import com.yzy.module_home.R
-import com.yzy.module_home.bean.Travel
 import com.yzy.module_home.databinding.ActivityDynamicBinding
 import com.yzy.module_home.ui.vm.DynamicVM
 
@@ -15,6 +15,7 @@ class DynamicActivity : BaseActivity<DynamicVM, ActivityDynamicBinding>() {
 
     companion object{
          const val EXTRA_TRAVEL = "EXTRA_TRAVEL"
+        @JvmStatic
         fun newInstance(context: Context, travel: Travel?): Intent {
             val intent = Intent(context, DynamicActivity::class.java)
             intent.putExtra(EXTRA_TRAVEL, travel)

@@ -53,6 +53,7 @@ android {
             dataBinding = true
         }
 
+
         //生成libs目录
         sourceSets {
             main {

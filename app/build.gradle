@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.dagger.hilt.android'
 
 android {
 
@@ -27,6 +28,8 @@ android {
                                      "$projectDir/schemas".toString()]
             }
         }
+
+
     }
 
     buildTypes {
@@ -71,6 +74,9 @@ dependencies {
     implementation project(path: ':module_login')
     implementation project(path: ':module_home')
     implementation project(path: ':module_data')
+
+    kapt rootProject.ext.commonDeps.hilt_compiler
+    implementation rootProject.ext.commonDeps.hilt
 
 
     testImplementation 'junit:junit:4.13.2'

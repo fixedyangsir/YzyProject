@@ -8,6 +8,12 @@ import com.alibaba.android.arouter.launcher.ARouter
 object ARouterUtils {
     const val PATH_HOME="/app/HomeActivity"
 
+
+    const val SERVICE_HOME_DATA="/home/data"
+
+
+
+
     fun goHome() {
         ARouter.getInstance().build(PATH_HOME)
             .navigation()

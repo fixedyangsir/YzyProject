@@ -1,5 +1,6 @@
 apply from: "${rootProject.getProjectDir()}/config_lib_build.gradle"
 
+apply plugin: 'com.google.dagger.hilt.android'
 android {
   //  resourcePrefix "common_" //给 Module 内的资源名增加前缀, 避免资源名冲突
 
@@ -26,6 +27,9 @@ dependencies {
     api rootProject.ext.toolDeps.autosize
 
     api rootProject.ext.commonDeps.arouter_api
+
+    kapt rootProject.ext.commonDeps.hilt_compiler
+    implementation rootProject.ext.commonDeps.hilt
 
 
 }
