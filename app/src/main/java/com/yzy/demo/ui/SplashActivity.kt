@@ -22,6 +22,7 @@ class SplashActivity : BaseActivity<SplashVM, ActivitySplashBinding>() {
             }else{
                 goActivity<LoginActivity>()
             }
+            finish()
         }
     }
 

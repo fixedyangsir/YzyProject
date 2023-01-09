@@ -116,8 +116,11 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
 
     override fun onBackPressed() {
         if (!ExpandPagerHelper.onBackPressed(mDatabind.viewPager)) {
-            super.onBackPressed();
+            moveTaskToBack(false)
         }
     }
+
+
+
 
 }
