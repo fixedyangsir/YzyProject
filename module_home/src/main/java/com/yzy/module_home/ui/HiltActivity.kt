@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import com.gyf.immersionbar.ktx.immersionBar
 import com.yzy.lib_common.util.RunUtils
 import com.yzy.module_base.base.BaseActivity
@@ -23,7 +24,7 @@ import javax.inject.Singleton
  * 模拟不同图片框架加载图片
  */
 @AndroidEntryPoint
-class HiltActivity : BaseActivity<HiltVM, ActivityHiltBinding>() {
+class HiltActivity : BaseActivity< ActivityHiltBinding>() {
 
     @GlideLoadAnnotation
     @Inject
@@ -32,6 +33,9 @@ class HiltActivity : BaseActivity<HiltVM, ActivityHiltBinding>() {
     @ColiLoadAnnotation
     @Inject
     lateinit var coliLoad: LoadImageInterface
+
+
+    val mViewModel :HiltVM by viewModels()
 
     val loadImageRunnable by lazy {
         Runnable {

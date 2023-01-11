@@ -9,7 +9,7 @@ import com.yzy.module_home.R
 import com.yzy.module_home.databinding.FragmentTopBinding
 import com.yzy.module_home.widget.expandPage.fragments.vm.TopVM
 
-class TopFragment : BaseFragment<TopVM, FragmentTopBinding>() {
+class TopFragment : BaseFragment<FragmentTopBinding>() {
 
     var travel: Travel? = null
 

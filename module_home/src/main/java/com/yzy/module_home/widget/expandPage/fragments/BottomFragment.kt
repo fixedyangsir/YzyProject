@@ -8,7 +8,7 @@ import com.yzy.module_home.R
 import com.yzy.module_home.databinding.FragmentBottomBinding
 import com.yzy.module_home.widget.expandPage.fragments.vm.BottomVM
 
-class BottomFragment : BaseFragment<BottomVM, FragmentBottomBinding>() {
+class BottomFragment : BaseFragment<FragmentBottomBinding>() {
 
 
     var travel: Travel? = null

@@ -23,13 +23,13 @@ import com.yzy.lib_common.widget.dialog.LoadingDialog
 /**
  * 描述　: ViewModelFragment基类，自动把ViewModel注入Fragment
  */
-abstract class BaseVmFragment<VM : BaseViewModel> : Fragment(),
+abstract class BaseVmFragment : Fragment(),
     SimpleImmersionOwner {
 
     //Whether to load for the first time
     var isFirst: Boolean = true
 
-    lateinit var mViewModel: VM
+
 
     lateinit var mActivity: AppCompatActivity
 
@@ -66,7 +66,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isFirst = true
-        mViewModel = createViewModel()
+
 
         initView(savedInstanceState)
         createObserver()
@@ -81,12 +81,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment(),
      */
     open fun onNetworkStateChanged(netState: NetState) {}
 
-    /**
-     * 创建viewModel
-     */
-    private fun createViewModel(): VM {
-        return ViewModelProvider(this).get(getVmClazz(this))
-    }
+
 
     /**
      * 初始化view

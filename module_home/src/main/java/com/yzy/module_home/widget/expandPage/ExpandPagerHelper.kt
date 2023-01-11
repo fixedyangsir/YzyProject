@@ -10,11 +10,11 @@ import com.yzy.module_home.widget.expandPage.fragments.ExpandFragment
  * Created by yzy on 2023/1/5.
  */
 object ExpandPagerHelper {
-    fun getCurrentFragment(viewPager: ViewPager): ExpandFragment<*,*>? {
+    fun getCurrentFragment(viewPager: ViewPager): ExpandFragment<*>? {
         if (viewPager.adapter is ExpandAdapter) {
             val adapter = viewPager.adapter as ExpandAdapter?
             val fragment = adapter!!.currentFragment
-            if (fragment is ExpandFragment<*,*>) {
+            if (fragment is ExpandFragment<*>) {
                 return fragment
             }
         }

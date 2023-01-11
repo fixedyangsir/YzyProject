@@ -11,7 +11,7 @@ import java.util.*
  * activity管理
  */
 object KtxActivityManger {
-    private val mActivityList = LinkedList<BaseVmActivity<*>>()
+    private val mActivityList = LinkedList<BaseVmActivity>()
 
     //三方activity
     private val mOtherActivityList by lazy {
@@ -22,13 +22,13 @@ object KtxActivityManger {
         return mActivityList.size
     }
 
-    fun getAllList(): LinkedList<BaseVmActivity<*>> = mActivityList
+    fun getAllList(): LinkedList<BaseVmActivity> = mActivityList
 
 
     /**
      * 当前activity
      */
-    val currentActivity: BaseVmActivity<*>?
+    val currentActivity: BaseVmActivity?
         get() =
             if (mActivityList.isEmpty()) null
             else mActivityList.last
@@ -36,7 +36,7 @@ object KtxActivityManger {
     /**
      * activity入栈
      */
-    fun pushActivity(activity: BaseVmActivity<*>) {
+    fun pushActivity(activity: BaseVmActivity) {
         if (mActivityList.contains(activity)) {
             if (mActivityList.last != activity) {
                 mActivityList.remove(activity)
@@ -62,7 +62,7 @@ object KtxActivityManger {
     /**
      * activity出栈
      */
-    fun popActivity(activity: BaseVmActivity<*>) {
+    fun popActivity(activity: BaseVmActivity) {
         mActivityList.remove(activity)
     }
 
@@ -83,7 +83,7 @@ object KtxActivityManger {
     /**
      * 关闭传入的activity
      */
-    fun finishActivity(activity: BaseVmActivity<*>) {
+    fun finishActivity(activity: BaseVmActivity) {
         mActivityList.remove(activity)
         activity.finish()
     }
@@ -199,7 +199,7 @@ object KtxActivityManger {
     /**
      * 查找 activity
      */
-    fun findActivity(clazz: Class<*>): BaseVmActivity<*>? {
+    fun findActivity(clazz: Class<*>): BaseVmActivity? {
         for (activity in mActivityList) {
             if (activity::class.java == clazz) {
                 return activity

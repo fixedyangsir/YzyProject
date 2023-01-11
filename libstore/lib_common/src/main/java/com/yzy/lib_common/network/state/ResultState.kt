@@ -32,7 +32,7 @@ sealed class ResultState<out T> {
 fun <T> EventLiveData<ResultState<T>>.paresResult(result: BaseResponse<T>) {
 
     submitValue(
-        if (result.isSucces()) ResultState.onAppSuccess(result.getResponseData(),result.getResponseTraceId().getDefault("")) else
+        if (result.isSuccess()) ResultState.onAppSuccess(result.getResponseData(),result.getResponseTraceId().getDefault("")) else
             ResultState.onAppError(
                 AppException(
                     result.getResponseCode(),

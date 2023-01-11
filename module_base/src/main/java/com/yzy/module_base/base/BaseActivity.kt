@@ -9,26 +9,16 @@ import com.hjq.toast.ToastUtils
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.enums.PopupAnimation
 import com.yzy.lib_common.base.activity.BaseVmDbActivity
-import com.yzy.lib_common.base.viewmodel.BaseViewModel
 import com.yzy.lib_common.ext.dp
-import com.yzy.lib_common.ext.getAppViewModel
 import com.yzy.lib_common.ext.getResColor
 import com.yzy.lib_common.util.MyToastStrategy
 import com.yzy.lib_common.widget.dialog.LoadingDialog
 import com.yzy.module_base.R
-import com.yzy.module_base.event.AppViewModel
-import com.yzy.module_base.event.EventViewModel
 import com.yzy.module_base.widget.dialog.AppLoadingDialog
 
 
-abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbActivity<VM, DB>() {
+abstract class BaseActivity< DB : ViewDataBinding> : BaseVmDbActivity<DB>() {
 
-
-    //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
-    val appViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
-
-    //Application全局的ViewModel，用于发送全局通知操作
-    val eventViewModel: EventViewModel by lazy { getAppViewModel<EventViewModel>() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initImmersionBar()

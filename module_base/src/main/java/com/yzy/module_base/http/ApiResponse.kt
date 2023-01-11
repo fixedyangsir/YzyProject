@@ -11,7 +11,7 @@ import com.yzy.lib_common.network.BaseResponse
 data class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T?,var traceId:String?) : BaseResponse<T>() {
 
 
-    override fun isSucces() = errorCode == 0
+    override fun isSuccess() = errorCode == 0
 
     override fun getResponseCode() = errorCode
 

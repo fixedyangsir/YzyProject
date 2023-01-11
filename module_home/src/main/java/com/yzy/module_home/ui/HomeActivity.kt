@@ -27,7 +27,7 @@ import com.yzy.module_home.widget.expandPage.fragments.ExpandFragment
  * 主界面 组件化 数据共享
  */
 @Route(path = ARouterUtils.PATH_HOME)
-class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>(),
+class HomeActivity : BaseActivity<ActivityHomeBinding>(),
     ExpandFragment.OnExpandingClickListener {
 
 

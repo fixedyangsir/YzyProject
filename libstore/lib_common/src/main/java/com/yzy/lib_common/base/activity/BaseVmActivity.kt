@@ -18,14 +18,14 @@ import me.jessyan.autosize.AutoSizeCompat
 import me.jessyan.autosize.internal.CustomAdapt
 
 
-abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
+abstract class BaseVmActivity : AppCompatActivity() {
 
     /**
      * 是否需要使用DataBinding 供子类BaseVmDbActivity修改，用户请慎动
      */
     private var isUserDb = false
 
-    lateinit var mViewModel: VM
+
 
 
     private val loadingDialog: LoadingDialog by lazy {
@@ -64,7 +64,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     }
 
     private fun init(savedInstanceState: Bundle?) {
-        mViewModel = createViewModel()
+
         initView(savedInstanceState)
         createObserver()
         NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
@@ -81,13 +81,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
      */
     open fun onNetworkStateChanged(netState: NetState) {}
 
-
-    /**
-     * 创建viewModel
-     */
-    private fun createViewModel(): VM {
-        return ViewModelProvider(this).get(getVmClazz(this))
-    }
 
     /**
      * 创建LiveData数据观察者
@@ -133,9 +126,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
         return super.dispatchTouchEvent(ev)
     }
 
-    fun getThis(): BaseVmActivity<*> {
-        return this
-    }
+
 
     override fun getResources(): Resources {
         runOnUiThread {

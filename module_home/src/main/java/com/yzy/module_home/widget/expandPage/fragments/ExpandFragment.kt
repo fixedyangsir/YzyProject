@@ -17,7 +17,7 @@ import com.yzy.module_home.R
 import com.yzy.module_home.databinding.FragmentExpandingBinding
 import com.yzy.module_home.widget.expandPage.fragments.vm.ExpandVM
 
-abstract class ExpandFragment<VM : BaseViewModel, DB : ViewDataBinding>  : BaseFragment<ExpandVM, FragmentExpandingBinding>() {
+abstract class ExpandFragment< DB : ViewDataBinding>  : BaseFragment< FragmentExpandingBinding>() {
     var fgtTop: Fragment? = null
     var fgtBottom: Fragment? = null
     private var startY = 0f

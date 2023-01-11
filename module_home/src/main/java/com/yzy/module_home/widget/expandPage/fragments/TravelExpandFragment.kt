@@ -8,7 +8,7 @@ import com.yzy.module_home.databinding.FragmentExpandingBinding
 import com.yzy.module_home.widget.expandPage.fragments.vm.ExpandVM
 
 
-class TravelExpandFragment : ExpandFragment<ExpandVM, FragmentExpandingBinding>() {
+class TravelExpandFragment : ExpandFragment< FragmentExpandingBinding>() {
     var travel: Travel? = null
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

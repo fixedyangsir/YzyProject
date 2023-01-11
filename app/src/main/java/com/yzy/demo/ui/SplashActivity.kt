@@ -13,7 +13,7 @@ import com.yzy.module_base.utils.AppCache
 import com.yzy.module_home.ui.HomeActivity
 import com.yzy.module_login.ui.LoginActivity
 
-class SplashActivity : BaseActivity<SplashVM, ActivitySplashBinding>() {
+class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     val runnable by lazy {
         Runnable {

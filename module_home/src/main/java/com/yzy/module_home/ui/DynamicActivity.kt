@@ -17,7 +17,7 @@ import com.yzy.module_home.ui.vm.DynamicVM
 import com.yzy.module_home.utils.Utils
 
 
-class DynamicActivity : BaseActivity<DynamicVM, ActivityDynamicBinding>() {
+class DynamicActivity : BaseActivity<ActivityDynamicBinding>() {
 
 
     companion object {

@@ -18,7 +18,6 @@ interface LoginService {
      */
     @POST("user/login")
     @FormUrlEncoded
-    @InjectViewModel(LoginVM::class)
     suspend fun login(
         @Field("username") username: String,
         @Field("password") password: String,

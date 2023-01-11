@@ -14,7 +14,7 @@ class KtxLifeCycleCallBack : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         try {
-            if (activity is BaseVmActivity<*>){
+            if (activity is BaseVmActivity){
                 KtxActivityManger.pushActivity(activity)
             }else{
                 KtxActivityManger.pushOtherActivity(activity)
@@ -43,8 +43,8 @@ class KtxLifeCycleCallBack : Application.ActivityLifecycleCallbacks {
     override fun onActivityDestroyed(activity: Activity) {
         //   "onActivityDestroyed : ${activity.localClassName}".logd()
         try {
-            if (activity is BaseVmActivity<*> ){
-                KtxActivityManger.popActivity(activity as BaseVmActivity<*>)
+            if (activity is BaseVmActivity ){
+                KtxActivityManger.popActivity(activity as BaseVmActivity)
             }else{
                 KtxActivityManger.popOtherActivity(activity)
             }

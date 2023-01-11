@@ -13,7 +13,7 @@ import com.yzy.lib_common.base.viewmodel.BaseViewModel
  * 描述　: ViewModelFragment基类，自动把ViewModel注入Fragment和Databind注入进来了
  * 需要使用Databind的清继承它
  */
-abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmFragment<VM>() {
+abstract class BaseVmDbFragment<DB : ViewDataBinding> : BaseVmFragment() {
 
     //ViewDataBinding for this class
     lateinit var mDatabind: DB
