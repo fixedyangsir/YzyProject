@@ -9,12 +9,12 @@ import com.tmall.wireless.vaf.framework.VafContext
 import com.tmall.wireless.vaf.virtualview.core.IContainer
 import com.tmall.wireless.vaf.virtualview.event.EventManager
 import com.yzy.lib_common.base.Ktx
+import com.yzy.lib_common.util.Utils
 import com.yzy.module_base.base.BaseActivity
 import com.yzy.module_base.bean.Travel
 import com.yzy.module_home.R
 import com.yzy.module_home.databinding.ActivityDynamicBinding
-import com.yzy.module_home.ui.vm.DynamicVM
-import com.yzy.module_home.utils.Utils
+import org.json.JSONObject
 
 
 class DynamicActivity : BaseActivity<ActivityDynamicBinding>() {
@@ -82,7 +82,7 @@ class DynamicActivity : BaseActivity<ActivityDynamicBinding>() {
         mDatabind.llContent.addView(container)
 
         //模拟填充数据
-        val jsonObject= Utils.getJSONDataFromAsset(this, "HelloWorld.json")
+        val jsonObject= JSONObject(Utils.getJSONDataFromAsset(this, "HelloWorld.json"))
         if (jsonObject != null) {
             (container as IContainer).virtualView.setVData(jsonObject)
         }

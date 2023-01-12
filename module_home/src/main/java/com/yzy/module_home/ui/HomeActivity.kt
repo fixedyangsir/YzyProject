@@ -87,8 +87,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),
 
         var intent: Intent? = null
         when (val index = mDatabind.viewPager.currentItem) {
-            0 -> intent = DynamicActivity.newInstance(this, adapter.travels[index])
+            0 -> intent = YzyViewActivity.newInstance(this, adapter.travels[index])
             1 -> intent = HiltActivity.newInstance(this, adapter.travels[index])
+            2 -> intent = DynamicActivity.newInstance(this, adapter.travels[index])
         }
         startInfoActivity(view, intent!!)
     }
@@ -119,8 +120,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),
             moveTaskToBack(false)
         }
     }
-
-
 
 
 }

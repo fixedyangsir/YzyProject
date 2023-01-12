@@ -14,10 +14,10 @@ import com.yzy.module_data.R
 class DataServiceService:IDataService {
     override fun getHomeData(): MutableList<Travel> {
        return mutableListOf<Travel>().apply {
-           add(Travel("VirtualView 控件演示",
+           add(Travel("动态布局演示",
                "by 杨镇瑜",
                "2023-1-06",
-               "简介：阿里巴巴开源动态化界面库",
+               "简介：自定义动态布局模板",
                "MY  PROJECT",
                R.mipmap.icon_like,
                R.mipmap.icon_page_03))
@@ -29,6 +29,14 @@ class DataServiceService:IDataService {
                "MY  PROJECT",
                R.mipmap.icon_star,
                R.mipmap.icon_page_02))
+
+           add(Travel("VirtualView 控件演示",
+               "by 杨镇瑜",
+               "2023-1-06",
+               "简介：阿里巴巴开源动态化界面库",
+               "MY  PROJECT",
+               R.mipmap.icon_like,
+               R.mipmap.icon_page_03))
 
 
        }

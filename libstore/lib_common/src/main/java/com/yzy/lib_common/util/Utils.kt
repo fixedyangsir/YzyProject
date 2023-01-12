@@ -1,4 +1,4 @@
-package com.yzy.module_home.utils
+package com.yzy.lib_common.util
 
 import android.content.Context
 import android.content.res.AssetManager
@@ -57,7 +57,7 @@ object Utils {
      * @param name    assets目录下的json文件名
      * @return json数据对象
      */
-    fun getJSONDataFromAsset(@NonNull context: Context, name: String?): JSONObject? {
+    fun getJSONDataFromAsset(@NonNull context: Context, name: String?): String? {
         try {
             val inputStream = context.assets.open(name!!)
             val inputStreamReader = BufferedReader(InputStreamReader(inputStream))
@@ -67,7 +67,7 @@ object Utils {
                 sb.append(str)
             }
             inputStreamReader.close()
-            return JSONObject(sb.toString())
+            return sb.toString()
         } catch (e: IOException) {
             e.printStackTrace()
         } catch (e: JSONException) {

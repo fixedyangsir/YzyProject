@@ -1,10 +1,8 @@
 package com.yzy.module_login.http
 
-import com.viewmodel.compiler.InjectViewModel
 import com.yzy.module_base.bean.UserInfo
 import com.yzy.module_base.http.ApiResponse
 import com.yzy.module_base.http.ApiManager
-import com.yzy.module_login.ui.vm.LoginVM
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

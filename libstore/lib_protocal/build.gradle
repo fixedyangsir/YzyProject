@@ -1,10 +1,25 @@
 apply from: "${rootProject.getProjectDir()}/config_lib_build.gradle"
 
 android {
-
+//这个是ARouter需要配置的kapt
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
 }
 
 dependencies {
+    api rootProject.ext.viewDeps.shapeView
+    api rootProject.ext.androidLibs
 
+    //弹性盒子  https://github.com/google/flexbox-layout
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    implementation project(path: ':vmAnnCompiler')
+    kapt project(path: ':vmAnnCompiler')
+
+    kapt rootProject.ext.commonDeps.arouter_compiler
+    implementation rootProject.ext.commonDeps.arouter_api
 
 }

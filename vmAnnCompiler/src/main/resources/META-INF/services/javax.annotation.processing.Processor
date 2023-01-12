@@ -1,1 +1,2 @@
-com.viewmodel.compiler.TestAnnotationProcessor
+com.viewmodel.compiler.YzyViewAnnotationProcessor
+com.viewmodel.compiler.YzyLayoutParamsAnnotationProcessor

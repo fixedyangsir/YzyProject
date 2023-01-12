@@ -1,0 +1,114 @@
+{
+  "name": "YzyFlexBoxLayout",
+  "type": "ViewGroup",
+  "style": {
+    "flexDirection": "column"
+  },
+  "id": 10000,
+  "parentId": null,
+  "parentName": null,
+  "layoutParams": {
+    "width": "-1",
+    "height": "-1"
+  },
+  "children": [
+    {
+      "name": "YzyTextView",
+      "type": "View",
+      "style": {
+        "text": "Yzy",
+        "textSize": "18",
+        "textColor": "#333333",
+        "solidColor": "#666666",
+        "corners": "50,50,50,50"
+      },
+      "id": 10001,
+      "parentId": 10000,
+      "parentName": "YzyFlexBoxLayout",
+      "layoutParams": {
+        "width": "200",
+        "height": "200"
+      }
+    },
+    {
+      "parentName": "YzyFlexBoxLayout",
+      "name": "YzyTextView",
+      "type": "View",
+      "style": {
+        "gravity": "center",
+        "text": "Hello World",
+        "textSize": "18",
+        "textColor": "#ffffff",
+        "solidColor": "#ff00ff",
+        "corners": "40,40,0,0"
+      },
+      "id": 10002,
+      "parentId": 10000,
+      "layoutParams": {
+        "width": "500",
+        "height": "200"
+      }
+    },
+    {
+      "name": "YzyFlexBoxLayout",
+      "type": "ViewGroup",
+      "style": {
+        "flexDirection": "row",
+        "justifyContent": "center"
+      },
+      "id": 10003,
+      "parentId": null,
+      "parentName": null,
+      "layoutParams": {
+        "width": "-1",
+        "height": "600"
+      },
+      "children": [
+        {
+          "name": "YzyTextView",
+          "type": "View",
+          "style": {
+            "text": "Demo Test",
+            "textSize": "20",
+            "textColor": "#999999",
+            "solidColor": "#ffff00",
+            "corners": "0,0,50,50"
+          },
+          "id": 10004,
+          "parentId": 10003,
+          "parentName": "YzyFlexBoxLayout",
+          "layoutParams": {
+            "width": "300",
+            "height": "300"
+          }
+        },
+        {
+          "parentName": "YzyFlexBoxLayout",
+          "name": "YzyTextView",
+          "type": "View",
+          "action": {
+            "type": "Click",
+            "data": "Hello!!",
+            "intent": "ShowToast"
+          },
+          "style": {
+            "gravity": "center",
+            "text": "点 我",
+            "textSize": "18",
+            "textColor": "#ffffff",
+            "solidColor": "#00ffff",
+            "corners": "0,0,0,0"
+          },
+          "id": 10005,
+          "parentId": 10003,
+          "layoutParams": {
+            "width": "400",
+            "height": "200"
+          }
+        },
+        {
+        }
+      ]
+    }
+  ]
+}
