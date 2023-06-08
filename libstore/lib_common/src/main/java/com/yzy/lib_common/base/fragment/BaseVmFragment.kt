@@ -10,11 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.gyf.immersionbar.components.SimpleImmersionOwner
 import com.yzy.lib_common.R
-import com.yzy.lib_common.base.viewmodel.BaseViewModel
-import com.yzy.lib_common.ext.getVmClazz
 import com.yzy.lib_common.network.manager.NetState
 import com.yzy.lib_common.network.manager.NetworkStateManager
 import com.yzy.lib_common.widget.dialog.LoadingDialog

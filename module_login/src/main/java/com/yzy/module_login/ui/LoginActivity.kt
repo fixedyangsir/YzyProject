@@ -2,12 +2,18 @@ package com.yzy.module_login.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.yzy.lib_common.base.viewmodel.LoadUiState
-import com.yzy.lib_common.ext.JetpackExt.flowWithLifecycle2
+import com.yzy.lib_common.base.mvi.LoadingEvent
+import com.yzy.lib_common.base.mvi.ToastEvent
+import com.yzy.lib_common.base.mvi.extension.collectSingleEvent
+import com.yzy.lib_common.base.mvi.extension.collectState
 import com.yzy.lib_common.ext.clickNoRepeat
 import com.yzy.lib_common.ext.input
+import com.yzy.lib_common.util.logd
 import com.yzy.module_base.base.BaseActivity
-import com.yzy.module_base.utils.ARouterUtils
+import com.yzy.module_base.module.RequestPermissionIntent
+import com.yzy.module_base.module.RequestPermissionUiState
+import com.yzy.module_base.module.RequestPermissionVM
+import com.yzy.module_base.utils.ToastUtils.showToast
 import com.yzy.module_login.R
 import com.yzy.module_login.databinding.ActivityLoginBinding
 import com.yzy.module_login.ui.vm.LoginIntent
@@ -23,6 +29,7 @@ import com.yzy.module_login.ui.vm.LoginVM
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
     private val viewModel: LoginVM by viewModels()
+    private val requestPermissionModel: RequestPermissionVM by viewModels()
 
     override fun layoutId() = R.layout.activity_login
 
@@ -33,42 +40,58 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
             val account = mDatabind.etAccount.input()
             val pwd = mDatabind.etPwd.input()
 
-            viewModel.dispatch(LoginIntent.Login(account, pwd))
+           // viewModel.dispatch(LoginIntent.Login(account, pwd))
+
+
+            requestPermissionModel.dispatch(RequestPermissionIntent.RequestCarmaPermissionIntent(this))
         }
 
     }
 
 
     override fun createObserver() {
-        /**
-         * Load加载事件 Loading、Error
-         */
-        viewModel.loadUiStateFlow.flowWithLifecycle2(this) { state ->
-            when (state) {
-                is LoadUiState.Loading -> if (state.isShow) showLoading() else dismissLoading()
-            }
+
+
+        viewModel.container.uiStateFlow.collectState(this) {
+             when (it) {
+                 is LoginUIState.LoginSuccessState -> {
+
+                      "LoginSuccessState".logd()
+                 }
+
+                 else -> {}
+             }
         }
 
-        /**
-         * 一次性消费事件
-         */
-        viewModel.sUiStateFlow.flowWithLifecycle2(this) { data ->
-            showToast(data.message)
-        }
 
-        /**
-         * 登录事件
-         */
-        viewModel.uiStateFlow.flowWithLifecycle2(this) { state ->
 
-            when (state) {
-                is LoginUIState.LoadSuccess -> {
-                    ARouterUtils.goHome()
-                    finish()
+        requestPermissionModel.container.uiStateFlow.collectState(this){
+
+            when(it){
+                is RequestPermissionUiState.RequestCarmaPermissionSuccessState->{
+                    showToast("授权成功")
                 }
 
+
+                else -> {}
             }
 
+
+        }
+
+
+
+
+        viewModel.container.singleEventFlow.collectSingleEvent(this) {
+            when (it) {
+                is ToastEvent -> {
+                    showToast(it.message)
+                }
+
+                is LoadingEvent -> {
+                    if (it.isShow) showLoading() else dismissLoading()
+                }
+            }
         }
 
 

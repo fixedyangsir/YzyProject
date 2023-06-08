@@ -33,7 +33,7 @@ class NetworkStateReceive : BroadcastReceiver() {
                     NetworkStateManager.instance.mNetworkStateCallback.getValue()?.let {
                         if (it.isSuccess) {
                             //没网
-                            NetworkStateManager.instance.mNetworkStateCallback.submitValue(
+                            NetworkStateManager.instance.mNetworkStateCallback.postValue(
                                 NetState(
                                     isSuccess = false,tips = R.string.str_network_error.getResString()
                                 )
@@ -41,7 +41,7 @@ class NetworkStateReceive : BroadcastReceiver() {
                         }
                         return
                     }
-                    NetworkStateManager.instance.mNetworkStateCallback.submitValue(
+                    NetworkStateManager.instance.mNetworkStateCallback.postValue(
                         NetState(
                             isSuccess = false,tips = R.string.str_network_error.getResString()
                         )
@@ -55,7 +55,7 @@ class NetworkStateReceive : BroadcastReceiver() {
 
                         if (!it.isSuccess) {
                             //有网络了
-                            NetworkStateManager.instance.mNetworkStateCallback.submitValue(
+                            NetworkStateManager.instance.mNetworkStateCallback.postValue(
                                 NetState(
                                     isSuccess = true
                                 )
@@ -71,7 +71,7 @@ class NetworkStateReceive : BroadcastReceiver() {
                         }
                         return
                     }
-                    NetworkStateManager.instance.mNetworkStateCallback.submitValue(
+                    NetworkStateManager.instance.mNetworkStateCallback.postValue(
                         NetState(
                             isSuccess = true
                         )
@@ -107,7 +107,7 @@ class NetworkStateReceive : BroadcastReceiver() {
                 }
             }
             //网络超时
-            NetworkStateManager.instance.mNetworkStateCallback.submitValue(
+            NetworkStateManager.instance.mNetworkStateCallback.postValue(
                 NetState(
                     isSuccess = false,
                     tips = msg,

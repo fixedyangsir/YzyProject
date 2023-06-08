@@ -8,12 +8,84 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentFactory
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.chad.library.adapter.base.BaseQuickAdapter
 import java.math.BigDecimal
 import java.util.regex.Pattern
 
+/**
+ * Created by yzy on 2020/8/4.
+ */
+fun <T> RecyclerView.init(
+    adapter: BaseQuickAdapter<T, *>?,
+    layoutManager: RecyclerView.LayoutManager? = LinearLayoutManager(context),
+    animator: RecyclerView.ItemAnimator? = DefaultItemAnimator(),
+    decoration: RecyclerView.ItemDecoration? = null
+): RecyclerView {
+    overScrollMode = View.OVER_SCROLL_NEVER
+    setHasFixedSize(true)
+    animator?.let {
+        itemAnimator = it
+    } ?: let {
+        itemAnimator = DefaultItemAnimator()
+    }
+    layoutManager?.let {
+        setLayoutManager(it)
+    } ?: let {
+        setLayoutManager(LinearLayoutManager(context))
+    }
+    decoration?.let {
+        addItemDecoration(decoration)
+    }
+    adapter?.let {
+        setAdapter(it)
+    }
 
+    return this
+
+}
+
+
+/**
+ * 给adapter拓展的，防止重复点击item
+ */
+var adapterLastClickTime = 0L
+
+fun BaseQuickAdapter<*, *>.setNbOnItemClickListener(
+    interval: Long = 500,
+    action: (adapter: BaseQuickAdapter<*, *>, view: View, position: Int) -> Unit
+) {
+    setOnItemClickListener { adapter, view, position ->
+        val currentTime = System.currentTimeMillis()
+        if (compareTime(adapterLastClickTime,currentTime,interval)) {
+            return@setOnItemClickListener
+        }
+        adapterLastClickTime = currentTime
+        action(adapter, view, position)
+    }
+}
+
+/**
+ * 给adapter拓展的，防止重复点击item
+ */
+var adapterchildlastClickTime = 0L
+fun BaseQuickAdapter<*, *>.setNbOnItemChildClickListener(
+    interval: Long = 500,
+    action: (adapter: BaseQuickAdapter<*, *>, view: View, position: Int) -> Unit
+) {
+    setOnItemChildClickListener { adapter, view, position ->
+        val currentTime = System.currentTimeMillis()
+        if (compareTime(adapterchildlastClickTime,currentTime,interval)) {
+            return@setOnItemChildClickListener
+        }
+        adapterchildlastClickTime = currentTime
+        action(adapter, view, position)
+    }
+}
 /**
  * 防止重复点击事件 默认0.5秒内不可重复点击
  * @param interval 时间间隔 默认0.5秒

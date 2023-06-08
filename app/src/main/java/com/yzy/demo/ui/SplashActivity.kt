@@ -10,7 +10,6 @@ import com.yzy.lib_common.ext.goActivity
 import com.yzy.lib_common.util.RunUtils
 import com.yzy.module_base.base.BaseActivity
 import com.yzy.module_base.utils.AppCache
-import com.yzy.module_home.ui.HomeActivity
 import com.yzy.module_login.ui.LoginActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
@@ -18,7 +17,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     val runnable by lazy {
         Runnable {
             if (AppCache.isLogin()){
-                goActivity<HomeActivity>()
+             //   goActivity<HomeActivity>()
             }else{
                 goActivity<LoginActivity>()
             }

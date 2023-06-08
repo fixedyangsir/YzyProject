@@ -23,12 +23,11 @@ include ':app'
 include ':module_mine'
 include ':module_login'
 include ':module_home'
-include ':module_data'
+
 //组件化模块父类
 include ':module_base'
 //基础功能lib
 include ':libstore:lib_common'
-include ':libstore:lib_protocal'
-//viewModule注解模块 用于生成http请求代码
-include ':vmAnnCompiler'
+
+
 

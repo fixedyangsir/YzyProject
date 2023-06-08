@@ -8,7 +8,7 @@ import com.yzy.lib_common.ext.getResString
  */
 class AppException : Exception {
 
-   private var errorMsg: String //错误消息
+     private var errorMsg: String //错误消息
     var errCode: Int = 0 //错误码
     var errorLog: String //错误日志
 

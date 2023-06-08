@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yzy.lib_common.R
-import com.yzy.lib_common.base.viewmodel.BaseViewModel
-import com.yzy.lib_common.ext.getVmClazz
 import com.yzy.lib_common.network.manager.NetState
 import com.yzy.lib_common.network.manager.NetworkStateManager
 import com.yzy.lib_common.util.SoftInputUtils
@@ -53,14 +50,12 @@ abstract class BaseVmActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ARouter.getInstance().inject(this)
-        if (checkNext()) {
-            if (!isUserDb) {
-                setContentView(layoutId())
-            } else {
-                initDataBind()
-            }
-            init(savedInstanceState)
+        if (!isUserDb) {
+            setContentView(layoutId())
+        } else {
+            initDataBind()
         }
+        init(savedInstanceState)
     }
 
     private fun init(savedInstanceState: Bundle?) {
@@ -72,9 +67,7 @@ abstract class BaseVmActivity : AppCompatActivity() {
         })
     }
 
-    open fun checkNext(): Boolean {
-        return true
-    }
+
 
     /**
      * 网络变化监听 子类重写
@@ -97,12 +90,8 @@ abstract class BaseVmActivity : AppCompatActivity() {
      */
     open fun initDataBind() {}
 
-    /**
-     *
-     *
-     */
 
-    abstract fun showToast(msg: String)
+
 
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {

@@ -4,7 +4,8 @@ package com.yzy.lib_common.network.api
 import com.google.gson.GsonBuilder
 import com.yzy.lib_common.BuildConfig
 import com.yzy.lib_common.base.appContext
-import com.yzy.lib_common.network.CoroutineCallAdapterFactory
+import com.yzy.lib_common.network.calladapter.CoroutineCallAdapterFactory
+import com.yzy.lib_common.network.calladapter.FlowCallAdapterFactory
 import com.yzy.lib_common.network.interceptor.CacheInterceptor
 import com.yzy.lib_common.network.interceptor.RewriteCacheControlInterceptor
 import com.yzy.lib_common.network.interceptor.logging.LogInterceptor
@@ -58,7 +59,6 @@ abstract class DefaultNetworkApi : BaseNetworkApi() {
             writeTimeout(15, TimeUnit.SECONDS)
 
 
-
         }
         return builder
     }
@@ -71,6 +71,7 @@ abstract class DefaultNetworkApi : BaseNetworkApi() {
         return builder.apply {
             addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             addCallAdapterFactory(CoroutineCallAdapterFactory())
+            addCallAdapterFactory(FlowCallAdapterFactory.create(true))
         }
     }
 

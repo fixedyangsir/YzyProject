@@ -1,11 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.dagger.hilt.android'
 
 android {
-
+    namespace  "com.yzy.module_base"
 
     kapt {
         arguments {
@@ -19,24 +17,23 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
         multiDexEnabled true
 
     }
     buildFeatures{
-
         dataBinding = true
+        buildConfig true
     }
 
 
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
+
     lintOptions {
         disable 'InvalidPackage'
         disable "ResourceType"
@@ -45,14 +42,13 @@ android {
 
 
 
+
+
 }
 
 
 dependencies {
 
-
-    kapt rootProject.ext.commonDeps.hilt_compiler
-    implementation rootProject.ext.commonDeps.hilt
     api project(path: ':libstore:lib_common')
 
 }

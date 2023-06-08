@@ -5,16 +5,13 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import com.tencent.mmkv.MMKV
 import com.yzy.lib_common.BuildConfig
 import com.yzy.lib_common.ext.getAppProcessName
 import com.yzy.lib_common.util.LogUtil
-import com.yzy.lib_common.util.MyToastStrategy
-import dagger.hilt.android.HiltAndroidApp
 import me.jessyan.autosize.AutoSizeConfig
 
-@HiltAndroidApp()
 abstract class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
     companion object {
         lateinit var baseApp: BaseApp
@@ -24,9 +21,8 @@ abstract class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
 
     private var mFactory: ViewModelProvider.Factory? = null
 
-    override fun getViewModelStore(): ViewModelStore {
-        return mAppViewModelStore
-    }
+    override val viewModelStore: ViewModelStore
+        get() = mAppViewModelStore
 
     override fun onCreate() {
         super.onCreate()
@@ -47,9 +43,7 @@ abstract class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
     }
 
     private fun initToast() {
-        val myToastStrategy = MyToastStrategy()
-        ToastUtils.init(this)
-        ToastUtils.setStrategy(myToastStrategy)
+        Toaster.init(this)
     }
 
     private fun initARouter() {
@@ -91,5 +85,7 @@ abstract class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
      * 获取应用包名 用于判断 多进程初始化问题
      */
     abstract fun getAppId(): String
+
+
 
 }

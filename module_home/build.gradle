@@ -1,20 +1,18 @@
 apply from: "${rootProject.getProjectDir()}/config_component_build.gradle"
-apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 
 
 android {
 
+    namespace  rootProject.applicationid.module_home
 
 
 }
 
 dependencies {
 
-    api (rootProject.ext.viewDeps.virtualview){
-        transitive = true
-    }
 
-    api project(path: ':libstore:lib_protocal')
+
 
 }

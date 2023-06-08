@@ -1,92 +1,75 @@
 package com.yzy.module_login.ui.vm
 
-import com.yzy.lib_common.base.viewmodel.BaseViewModel
-import com.yzy.lib_common.base.viewmodel.ISingleUiState
-import com.yzy.lib_common.base.viewmodel.IUiState
-import com.yzy.lib_common.ext.getResString
+import androidx.lifecycle.ViewModel
+import com.yzy.lib_common.base.mvi.Container
+import com.yzy.lib_common.base.mvi.LoadingEvent
+import com.yzy.lib_common.base.mvi.ToastEvent
+import com.yzy.lib_common.base.mvi.UiEvent
+import com.yzy.lib_common.base.mvi.UiState
+import com.yzy.lib_common.base.mvi.extension.containers
+import com.yzy.lib_common.base.mvi.extension.requestWithFlow
+import com.yzy.lib_common.network.AppException
 import com.yzy.module_base.bean.UserInfo
-import com.yzy.module_base.utils.AppCache
-import com.yzy.module_login.R
-import com.yzy.module_login.http.LoginRepository
+import com.yzy.module_login.http.LoginServiceApi
 
-class LoginVM : BaseViewModel<LoginUIState, LoginSingleUiState>() {
-
-
-    private val repo = LoginRepository()
+/**
+ * Created by yzy on 2023/6/2.
+ */
+class LoginVM: ViewModel() {
 
 
-    override fun initUiState(): LoginUIState {
-        return LoginUIState.INIT
-    }
+    private val _container by containers<LoginUIState>(LoginUIState.INIT)
 
-    /**
-     * 分发用户事件
-     * @param LoginIntent
-     */
+    val container: Container<LoginUIState, UiEvent> = _container
+
+
     fun dispatch(intent: LoginIntent) {
+
 
         when (intent) {
             is LoginIntent.Login -> {
+                requestWithFlow(request = LoginServiceApi.login(intent.name, intent.pwd), onStart = {
+                    _container.sendEvent(LoadingEvent(true))
+                }, successCallback = {
+                    _container.sendEvent(ToastEvent("登录成功"))
+                    _container.updateState {
+                        LoginUIState.LoginSuccessState(it)
+                    }
+
+                }, failCallback = {
+
+                    _container.sendEvent(ToastEvent(it.errorLog))
 
 
-                if (!checkInput(intent.name)) {
-                    showToast(R.string.str_account_input_tip.getResString())
-                    return
+                }, completionCallback = {
+                    _container.sendEvent(LoadingEvent(false))
                 }
-                if (!checkInput(intent.pwd)) {
-                    showToast(R.string.str_pwd_input_tip.getResString())
-                    return
-                }
-                requestDataWithFlow(showLoading = true,
-                    request = { repo.requestLogin(intent.name, intent.pwd) },
-                    successCallback = { data ->
-                        showToast(R.string.str_login_success.getResString())
-                        AppCache.saveUserInfo(data)
-                        sendUiState {
-                            LoginUIState.LoadSuccess(data)
-                        }
-                    },
-                    failCallback = {
-                        showToast(it)
-                    })
 
+
+                )
             }
-
 
         }
 
-    }
 
-    private fun checkInput(data: String): Boolean {
-        return data.length > 5
-    }
-
-
-    private fun showToast(message: String) {
-        sendSingleUiState(LoginSingleUiState(message))
     }
 
 
 }
 
-
-sealed class LoginUIState() : IUiState {
+sealed class LoginUIState() : UiState {
     object INIT : LoginUIState()
 
-    /**
-     * 请求成功
-     */
-    data class LoadSuccess(val userInfo: UserInfo) : LoginUIState()
-}
 
-data class LoginSingleUiState(val message: String) : ISingleUiState
+    data class LoginSuccessState(val userInfo: UserInfo) : LoginUIState()
+
+    data class ErrorState(val exception: AppException) : LoginUIState()
+}
 
 
 sealed class LoginIntent() {
 
-    /**
-     * 登录
-     */
+
     data class Login(val name: String, val pwd: String) : LoginIntent()
 
 }

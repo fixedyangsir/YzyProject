@@ -1,9 +1,8 @@
 /**
  * 关于整个项目(app/module)的通用gradle配置
  */
-apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.dagger.hilt.android'
 
 
 android {
@@ -38,19 +37,19 @@ android {
 
         //支持java8
         compileOptions {
-            coreLibraryDesugaringEnabled true
 
-            targetCompatibility JavaVersion.VERSION_1_8
-            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_17
+            sourceCompatibility JavaVersion.VERSION_17
         }
         //支持kotlin
         kotlinOptions {
-            jvmTarget = '1.8'
-            useIR = true
-        }
-        buildFeatures{
+            jvmTarget = '17'
 
-            dataBinding = true
+        }
+
+        buildFeatures {
+            dataBinding  true
+            buildConfig true
         }
 
 
@@ -66,12 +65,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     kapt rootProject.ext.commonDeps.arouter_compiler
     implementation rootProject.ext.commonDeps.arouter_api
-    
-    kapt rootProject.ext.commonDeps.hilt_compiler
-    implementation rootProject.ext.commonDeps.hilt
 
 
     api project(':module_base')
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
 
 }

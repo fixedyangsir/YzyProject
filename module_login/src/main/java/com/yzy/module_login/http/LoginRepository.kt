@@ -9,9 +9,7 @@ import com.yzy.module_base.bean.UserInfo
  */
 class LoginRepository : BaseRepository() {
 
-    suspend fun requestLogin(name: String, pwd: String): BaseResponse<UserInfo> {
-        return executeRequest { LOGIN_SERVICE.login(name, pwd) }
-    }
+
 
 
 }

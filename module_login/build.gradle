@@ -1,5 +1,5 @@
 apply from: "${rootProject.getProjectDir()}/config_component_build.gradle"
-apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 
 
@@ -7,17 +7,12 @@ android {
 
 
 
-    defaultConfig {
-        if (isModule) {
-            applicationId rootProject.applicationid.module_login
-        }
-    }
+    namespace  rootProject.applicationid.module_login
+
 
 }
 
 dependencies {
 
-    implementation project(path: ':vmAnnCompiler')
-    kapt project(path: ':vmAnnCompiler')
 
 }

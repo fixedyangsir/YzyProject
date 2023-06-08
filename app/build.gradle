@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.dagger.hilt.android'
+
 
 android {
+    namespace rootProject.applicationid.app
 
     //这个是ARouter需要配置的kapt
     kapt {
@@ -39,21 +40,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
+
+
     buildFeatures {
-        dataBinding = true
+        dataBinding true
+        buildConfig true
     }
-    kapt {  // kapt 配置
-        generateStubs = true
-    }
-    kapt {
-        useBuildCache = true
-    }
+
+
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
@@ -91,10 +91,9 @@ dependencies {
     implementation project(path: ':module_mine')
     implementation project(path: ':module_login')
     implementation project(path: ':module_home')
-    implementation project(path: ':module_data')
 
-    kapt rootProject.ext.commonDeps.hilt_compiler
-    implementation rootProject.ext.commonDeps.hilt
+
+
 
 
     testImplementation 'junit:junit:4.13.2'

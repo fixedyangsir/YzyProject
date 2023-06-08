@@ -18,7 +18,6 @@ import java.net.ConnectException
  */
 object ExceptionHandle {
     val appContext: Application by lazy { Ktx.app }
-    var time=0L
 
     fun handleException(e: Throwable?): AppException {
         val ex: AppException

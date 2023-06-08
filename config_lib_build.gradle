@@ -3,7 +3,7 @@
  */
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
 android {
 
@@ -31,21 +31,22 @@ android {
 
     //支持java8
     compileOptions {
-        coreLibraryDesugaringEnabled = true
-
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_17
 
 
     }
     //支持kotlin
     kotlinOptions {
-        jvmTarget = '1.8'
-        useIR = true
+        jvmTarget = '17'
     }
+
+
+
     //开启databinding
     buildFeatures{
-        dataBinding = true
+        dataBinding  true
+        buildConfig true
     }
 
 
@@ -61,6 +62,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+
 
 }

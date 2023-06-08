@@ -1,9 +1,9 @@
 package com.yzy.module_mine
 
-import com.yzy.lib_common.base.BaseApp
+import com.yzy.module_base.CommonApp
 
 
-class App: BaseApp() {
+class App : CommonApp() {
     override fun initByAppProcess() {
 
     }

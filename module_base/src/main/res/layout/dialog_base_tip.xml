@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjq.shape.layout.ShapeConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:paddingBottom="15dp"
+    app:shape_radius="12dp"
+    app:shape_solidColor="@color/color_white">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="提示"
+        android:textColor="@color/color_111111"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="是否确认解绑该设备？"
+        android:textColor="@color/color_333333"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+
+    <com.hjq.shape.view.ShapeTextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="取消"
+        android:textColor="@color/color_111111"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_confirm"
+        app:layout_constraintTop_toBottomOf="@id/tv_message"
+        app:shape_radius="8dp"
+        app:shape_solidColor="#E0E0E0"
+
+        />
+
+
+    <com.hjq.shape.view.ShapeTextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="确定"
+        android:textColor="@color/color_white"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/tv_cancel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_message"
+        app:layout_goneMarginLeft="15dp"
+        app:shape_radius="8dp"
+        app:shape_solidColor="@color/colorAccent"
+
+        />
+
+
+</com.hjq.shape.layout.ShapeConstraintLayout>

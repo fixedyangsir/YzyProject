@@ -1,103 +1,124 @@
 /**
- *  全局统一配置文件
- */
+ *  全局统一配置文件*/
 ext {
     //true 每个业务Module可以单独开发
     //false 每个业务Module以lib的方式运行
     //修改之后需要Sync方可生效
-    isModule = false
-    android = [
-            applicationId    : "com.yingsheng.hayloufun",
-            compileSdkVersion: 31,
-            buildToolsVersion: "30.0.2",
-            targetSdkVersion : 31,
-            minSdkVersion    : 26,
-            versionCode      : 1,
-            versionName      : "1.0.0",
-            androidXVersion  : "1.4.1",
-            ktx_core_version : "1.5.2",
-            lifecycle_version: "2.2.0",
-    ]
+    isModule = true
+    android = [compileSdkVersion: 33,
+               targetSdkVersion : 33,
+               minSdkVersion    : 26,
+               versionCode      : 1,
+               versionName      : "1.0.0",
+               androidXVersion  : "1.6.1",
+               ktx_core_version : "1.7.1",
+               lifecycle_version: "2.2.0",]
 
-    applicationid = [
-            app         : "com.yzy.demo",
-            module_home : "com.yzy.module_home",
-            module_login: "com.yzy.module_login",
-            module_mine : "com.yzy.module_mine"
-    ]
+    applicationid = [app         : "com.yzy.demo",
+                     module_home : "com.yzy.module_home",
+                     module_login: "com.yzy.module_login",
+                     module_mine : "com.yzy.module_mine"]
 
 
     netDependencies = [
-            "gson"               : "com.google.code.gson:gson:2.8.6",
-            "okhttp3"            : "com.squareup.okhttp3:okhttp:4.1.0",
+            //https://github.com/google/gson
+            "gson"               : "com.google.code.gson:gson:2.10.1",
+            //https://github.com/square/okhttp
+            "okhttp3"            : "com.squareup.okhttp3:okhttp:4.11.0",
+            "logging-interceptor": "com.squareup.okhttp3:logging-interceptor:4.11.0",
+            // https://github.com/square/retrofit
             "retrofit"           : "com.squareup.retrofit2:retrofit:2.9.0",
             "converter-gson"     : "com.squareup.retrofit2:converter-gson:2.9.0",
-            "logging-interceptor": "com.squareup.okhttp3:logging-interceptor:4.9.0",
-            "url-manager"        : "me.jessyan:retrofit-url-manager:1.4.0",
-    ]
+
+            "url-manager"        : "me.jessyan:retrofit-url-manager:1.4.0",]
 
     androidDeps = [
+            // https://developer.android.com/jetpack/androidx/releases/appcompat?hl=zh-cn
             "appcompat"       : "androidx.appcompat:appcompat:${android["androidXVersion"]}",
             "viewpager2"      : "androidx.viewpager2:viewpager2:1.0.0",
-            "material"        : "com.google.android.material:material:1.4.0",
-            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.1.4",
-    ]
+            //https://mvnrepository.com/artifact/com.google.android.material/material
+            "material"        : "com.google.android.material:material:1.9.0",
+            //https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.1.4",]
 
     kotlinDeps = [
-            "ktx-core"          : "androidx.core:core-ktx:1.7.0",
+            //https://mvnrepository.com/artifact/androidx.core/core-ktx
+            "ktx-core"          : "androidx.core:core-ktx:1.10.1",
+            //https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
             "coroutines-core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${android.ktx_core_version}",
             "coroutines-android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:${android.ktx_core_version}",
 
     ]
 
     lifecycleDeps = [
+            //https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-extensions
             "lifecycle-extensions" : "androidx.lifecycle:lifecycle-extensions:${android.lifecycle_version}",
             "livedata-ktx"         : "androidx.lifecycle:lifecycle-livedata-ktx:${android.lifecycle_version}",
             "viewmodel-ktx"        : "androidx.lifecycle:lifecycle-viewmodel-ktx:${android.lifecycle_version}",
-            "lifecycle-runtime-ktx": "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha01",
-            "activity_ktx "        : "androidx.activity:activity-ktx:1.3.1",
-            "fragment_ktx"         : "androidx.fragment:fragment-ktx:1.3.6",
-    ]
+            // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-runtime-ktx
+            "lifecycle-runtime-ktx": "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1",
+            //https://mvnrepository.com/artifact/androidx.activity/activity-ktx
+            "activity_ktx"         : "androidx.activity:activity-ktx:1.6.1",
+            //https://mvnrepository.com/artifact/androidx.fragment/fragment-ktx
+            "fragment_ktx"         : "androidx.fragment:fragment-ktx:1.5.7",]
 
     commonDeps = [
-            //路由
+            //路由https://github.com/alibaba/ARouter
             "arouter_api"     : 'com.alibaba:arouter-api:1.5.1',
             "arouter_compiler": 'com.alibaba:arouter-compiler:1.5.1',
-            //依赖注入
-            "hilt"            : 'com.google.dagger:hilt-android:2.41',
-            "hilt_compiler"   : 'com.google.dagger:hilt-android-compiler:2.41'
+
+
+            //glide https://github.com/bumptech/glide
+            "glide"           : 'com.github.bumptech.glide:glide:4.15.1',
+            "glide_compiler"   : 'com.github.bumptech.glide:compiler:4.15.1',
+
 
     ]
 
     viewDeps = [
-            "dialog"                : 'com.github.li-xiaojun:XPopup:2.9.1',
+            //https://github.com/li-xiaojun/XPopup
+            "dialog"                : 'com.github.li-xiaojun:XPopup:2.9.19',
             //https://github.com/getActivity/ToastUtils
-            "toast"                 : 'com.github.getActivity:ToastUtils:10.3',
-            // Shape 框架：https://github.com/getActivity/ShapeView
-            "shapeView"             : 'com.github.getActivity:ShapeView:6.2',
+            "toast"                 : 'com.github.getActivity:ToastUtils:12.2',
+            //https://github.com/getActivity/ShapeView
+            "shapeView"             : 'com.github.getActivity:ShapeView:8.5',
 
             // 状态栏 https://github.com/gyf-dev/ImmersionBar
-            "immersionbar"          : 'com.gyf.immersionbar:immersionbar:3.0.0',
-            "immersionbarComponents": 'com.gyf.immersionbar:immersionbar-components:3.0.0',
-            "immersionbarKtx"       : 'com.gyf.immersionbar:immersionbar-ktx:3.0.0',
+            "immersionbar"          : 'com.geyifeng.immersionbar:immersionbar:3.2.2',
+            "immersionbarComponents": 'com.geyifeng.immersionbar:immersionbar-components:3.2.2',
+            "immersionbarKtx"       : 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2',
 
-            //阿里动态化布局 https://github.com/alibaba/Virtualview-Android/blob/master/README-ch.md
-            "virtualview"           : 'com.alibaba.android:virtualview:1.4.6@aar'
+
+            //https://github.com/scwang90/SmartRefreshLayout
+            "smartrefreshLayout"    : 'io.github.scwang90:refresh-layout-kernel:2.0.6',
+            "smartrefreshHeader"    : 'io.github.scwang90:refresh-header-material:2.0.6',
+            "smartrefreshBallFooter"    : 'io.github.scwang90:refresh-footer-ball:2.0.6',
+            "smartrefreshClassicsFooter"    : 'io.github.scwang90:refresh-header-classics:2.0.6',
+
+            //https://github.com/CymChad/BaseRecyclerViewAdapterHelper/releases
+            "adapter"               : 'io.github.cymchad:BaseRecyclerViewAdapterHelper:3.0.13',
+            //状态页切换 https://github.com/KingJA/LoadSir
+            "loadsir"               : 'com.kingja.loadsir:loadsir:1.3.8'
+
 
     ]
 
     toolDeps = [
+            //https://github.com/orhanobut/logger
             "logger"            : "com.orhanobut:logger:2.2.0",
-            "mmkv"              : "com.tencent:mmkv-static:1.2.12",
-            //对LiveData 进行了功能扩展，可用于避免粘性事件及解决通知延迟问题 https://github.com/leavesC/EventLiveData/wiki
-            "livedata"          : "com.github.leavesCZY:EventLiveData:1.0.2",
+            //https://github.com/Tencent/MMKV
+            "mmkv"              : "com.tencent:mmkv-static:1.2.16",
+
             "multidex"          : 'androidx.multidex:multidex:2.0.1',
             "autosize"          : 'me.jessyan:autosize:1.2.1',
             //leakcanary内存泄露
             "leakcanary-android": "com.squareup.leakcanary:leakcanary-android:2.8.1",
+            //权限检查
+            "permissions"       : "com.github.getActivity:XXPermissions:18.2"
 
     ]
 
+    viewLibs = viewDeps.values()
     androidLibs = androidDeps.values()
     kotlinLibs = kotlinDeps.values()
     lifecycleLibs = lifecycleDeps.values()

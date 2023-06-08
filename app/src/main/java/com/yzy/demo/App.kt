@@ -1,12 +1,12 @@
 package com.yzy.demo
 
-import com.yzy.lib_common.base.BaseApp
-import com.yzy.lib_protocal.utils.ViewParser
+import com.yzy.module_base.CommonApp
 
 
-class App : BaseApp() {
+class App : CommonApp() {
     override fun initByAppProcess() {
-        ViewParser.init(this)
+        super.initByAppProcess()
+
     }
 
     override fun getAppId(): String {

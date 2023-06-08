@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yzy.demo">
 
+
+
     <application
         android:name=".App"
         android:icon="@mipmap/ic_logo"

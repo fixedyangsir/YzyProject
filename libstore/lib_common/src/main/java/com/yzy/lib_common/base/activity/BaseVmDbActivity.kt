@@ -3,7 +3,6 @@ package com.yzy.lib_common.base.activity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.yzy.lib_common.base.viewmodel.BaseViewModel
 
 /**
  * 描述　: 包含ViewModel 和Databind ViewModelActivity基类，把ViewModel 和Databind注入进来了

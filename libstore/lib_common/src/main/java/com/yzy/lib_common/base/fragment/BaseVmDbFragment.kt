@@ -1,4 +1,4 @@
-package com.yzy.mvvmlib.base.fragment
+package com.yzy.lib_common.base.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.yzy.lib_common.base.fragment.BaseVmFragment
-import com.yzy.lib_common.base.viewmodel.BaseViewModel
 
 /**
  * 描述　: ViewModelFragment基类，自动把ViewModel注入Fragment和Databind注入进来了
