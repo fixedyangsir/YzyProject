@@ -7,7 +7,7 @@ ext {
     isModule = true
     android = [compileSdkVersion: 33,
                targetSdkVersion : 33,
-               minSdkVersion    : 26,
+               minSdkVersion    : 24,
                versionCode      : 1,
                versionName      : "1.0.0",
                androidXVersion  : "1.6.1",
